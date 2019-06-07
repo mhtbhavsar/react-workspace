@@ -6,33 +6,17 @@ import CharComponent from './CharComponent/CharComponent';
 class App extends Component{
 
   state = {
-    stringData : "",
-    stringLength : 0
+    stringData : ""
   }
 
   strdataHandler = (event) => {
-    const strdataLength = event.target.value;
     this.setState({
-      stringData : event.target.value, 
-      stringLength : strdataLength.length
+      stringData : event.target.value
     })
   }
 
   
   deleteCharactersHandler = (charIndex) => {
-
-    /** 
-     * This state shold be update in immutable fasion
-     * While updating it should not affect the current object / change current object.
-     * To do that please refer the foloowign alternative ways
-     * use copy of current object instead of reference of current object
-     */
-
-    // ---------Getting reference of this object / current object----------
-    // const persons = this.state.persons;
-
-    // ---------2 alternate ways To get the copy of current object instead of reference---------- 
-    // const persons = this.state.persons.slice();
     const characters = this.state.stringData.split('');
     characters.splice(charIndex,1);
     const modifiedString = characters.join('');
@@ -73,9 +57,9 @@ class App extends Component{
     return(
         <div className="App">
           Please enter the text here to count length : <br/>
-        <input type="text" name="str_data" onChange={(event) => this.strdataHandler(event)}/><br/>
+        <input type="text" name="str_data" onChange={(event) => this.strdataHandler(event)} value={this.state.stringData}/><br/>
         String data entered : "{this.state.stringData}"
-        <ValidationComponent count={this.state.stringLength} />
+        <ValidationComponent count={this.state.stringData.length} />
         {/* <CharComponent count={this.state.stringLength} /> */}
         {characters}
         </div>
