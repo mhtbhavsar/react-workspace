@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Layouts from '../src/components/Layout/Layout';
+import BurgerBuilder from '../src/containers/BurgerBuilder/BurgerBuilder';
+import CssClasses from '../src/components/Layout/Layout.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+class App extends Component {
+  render () {
+   return ( 
+    <div className={CssClasses.Content}>
+        <Layouts>
+          <BurgerBuilder/>
+          <p>Test</p>
+        </Layouts>
+    </div> 
+    )
+  };
+};
 
 export default App;
